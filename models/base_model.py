@@ -41,11 +41,13 @@ class BaseModel:
 
     def to_dict(self):
         """converts the instnace to a dictionary"""
-        return self.__dict__ | {
+        dt = self.__dict__.copy()
+        dt.update({
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat(),
             "__class__": self.__class__.__name__,
-        }
+        })
+        return dt
 
     @classmethod
     def all(cls):
