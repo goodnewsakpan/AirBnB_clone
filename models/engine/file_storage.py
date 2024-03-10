@@ -20,7 +20,7 @@ class FileStorage:
 
     def new(self, obj):
         """Adds a new object to the file storage"""
-        self.__objects |= {f"{obj.__class__.__name__}.{obj.id}": obj}
+        self.__objects.update({f"{obj.__class__.__name__}.{obj.id}": obj})
 
     def save(self):
         """saves the objects in the file storage to the JSON file"""
