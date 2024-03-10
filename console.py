@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from ast import literal_eval
 from cmd import Cmd
 
@@ -5,15 +7,21 @@ from models import classes, storage
 
 
 class HBNBCommand(Cmd):
+    """This class represents a commandline interpreter to manage the hbnb console"""
     prompt = "(hbnb)"
 
     def do_quit(self, _):
+        """quit command to exit the interpreter"""
         return True
 
     def do_EOF(self, _):
+        """End of file command to exit the interpreter"""
+
         return True
 
     def do_create(self, model):
+        """create command to create a new instance of a specific model"""
+
         print(model)
         if not self.checker(model, ["n", 'ec']):
             return
@@ -22,6 +30,8 @@ class HBNBCommand(Cmd):
         print(ins.id)
 
     def do_show(self, model):
+        """show command to display information about a specific instance"""
+
         if not self.checker(model, ["n", "l", "ec", "es"]):
             return
         cls = model.split()[0]
@@ -29,6 +39,8 @@ class HBNBCommand(Cmd):
         print(classes[cls].show(key))
 
     def do_destroy(self, model):
+        """destroy command to remove a specific instance"""
+
         if not self.checker(model, ["n", "l", "ec", "es"]):
             return
         cls = model.split()[0]
@@ -36,17 +48,22 @@ class HBNBCommand(Cmd):
         classes[cls].destroy(key)
 
     def do_all(self, model):
+        """all command to display all instances of a specific model or all instances across all models if none is specified """
         if model and not self.checker(model, ["ec"]):
             return
         print(classes[model].all())
 
     def do_update(self, model):
-        if not self.checker(model, ["n", "l", "ec", "es", "a", "v"]):
+	    """update command to modify an instance attribute value"""
+        
+       if not self.checker(model, ["n", "l", "ec", "es", "a", "v"]):
             return
         extras = model.split()
         classes[extras[0]].update(extras[1], extras[2], extras[3])
 
     def default(self, line):
+		"""default command to handle all other commands not explicitly defined"""
+
         parse = self.parse_command(line)
         if parse:
             if not self.checker(parse[0], ["ec"]):
@@ -64,6 +81,8 @@ class HBNBCommand(Cmd):
 
     @staticmethod
     def parse_command(line):
+		"""parse the command entered by the user"""
+
         parts = line.split('.')
         if len(parts) == 2 and parts[1].endswith(')'):
             cls = parts[0]
@@ -81,6 +100,8 @@ class HBNBCommand(Cmd):
 
     @staticmethod
     def checker(model, keys):
+		"""checks if the model string contains any of the specified keys"""
+
         part = model.split()
         if "n" in keys and not model:
             print("** class name missing **")
