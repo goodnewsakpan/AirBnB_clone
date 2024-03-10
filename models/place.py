@@ -1,7 +1,9 @@
 from .base_model import BaseModel
+"""Base Model"""
 
 
 class Place(BaseModel):
+	"""A class representing a place in the system"""
 	city_id = ""
 	user_id = ""
 	name = ""
