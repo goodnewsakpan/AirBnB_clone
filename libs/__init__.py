@@ -11,7 +11,7 @@ def get_classes():
     from models.review import Review
 
     global classes
-    classes |= {
+    classes.update({
         "BaseModel": BaseModel,
         "User": User,
         "City": City,
@@ -19,4 +19,4 @@ def get_classes():
         "Amenity": Amenity,
         "State": State,
         "Review": Review
-    }
+    })
