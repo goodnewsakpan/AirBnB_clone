@@ -5,6 +5,7 @@ interpreter to manage the hbnb console
 """
 from ast import literal_eval
 import cmd
+
 from models import classes, storage
 
 
@@ -17,18 +18,21 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         """Called when an empty line is passed"""
+        pass
 
     def do_quit(self, _):
-        """Quit command to exit the program"""
+        """quit command to exit the interpreter"""
         return True
 
     def do_EOF(self, _):
         """End of file command to exit the interpreter"""
+
         return True
 
     def do_create(self, model):
         """create command to create a new instance of a specific model"""
 
+        print(model)
         if not self.checker(model, ["n", 'ec']):
             return
         ins = classes[model]()
@@ -40,8 +44,7 @@ class HBNBCommand(cmd.Cmd):
 
         if not self.checker(model, ["n", "l", "ec", "es"]):
             return
-        cls = model.split()[0]
-        key = model.replace(' ', '.')
+        cls, key = model.split()
         print(classes[cls].show(key))
 
     def do_destroy(self, model):
