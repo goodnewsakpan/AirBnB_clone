@@ -113,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
                 parts = parts[1].rstrip(")")
                 if not parts:
                     return cls, method
-                args = [literal_eval(i) for i in parts.split()]
+                args = [literal_eval(i.strip()) for i in parts.split(",")]
                 return cls, method, args
             return cls, parts[0]
         else:
