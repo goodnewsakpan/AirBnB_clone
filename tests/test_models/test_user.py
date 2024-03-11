@@ -32,7 +32,7 @@ class TestCity(TestCase):
         self.assertTrue(hasattr(user, "password"))
         self.assertIsInstance(user.password, str)
 
-    def test_base_model_id(self):
+    def test_user_id(self):
         bm1 = User()
         bm2 = User()
 
@@ -41,13 +41,13 @@ class TestCity(TestCase):
         self.assertIsInstance(UUID(bm1.id), UUID)
         self.assertIsInstance(bm1.id, str)
 
-    def test_base_model_created_at(self):
+    def test_user_created_at(self):
         bm1 = User()
 
         self.assertTrue(hasattr(bm1, "created_at"))
         self.assertIsInstance(bm1.created_at, datetime)
 
-    def test_base_model_updated_at(self):
+    def test_user_updated_at(self):
         bm1 = User()
 
         self.assertTrue(hasattr(bm1, "updated_at"))
@@ -104,19 +104,19 @@ class TestCity(TestCase):
         self.assertEqual(user.created_at, dt)
         self.assertEqual(user.updated_at, dt)
 
-    def test_base_model__str__(self):
+    def test_user__str__(self):
         user = User()
 
         string = f"[{user.__class__.__name__}] ({user.id}) {user.__dict__}"
         self.assertEqual(str(user), string)
 
-    def test_base_model__repr__(self):
+    def test_user__repr__(self):
         user = User()
 
         string = f"[{user.__class__.__name__}] ({user.id}) {user.__dict__}"
         self.assertEqual(user.__repr__(), string)
 
-    def test_base_model_save(self):
+    def test_user_save(self):
         user = User()
         user.save()
         storage.reload()
