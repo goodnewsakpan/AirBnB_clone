@@ -14,7 +14,7 @@ class HBNBCommand(Cmd):
     This class represents a commandline
     interpreter to manage the hbnb console
     """
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
 
     def emptyline(self):
         """Called when an empty line is passed"""
