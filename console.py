@@ -89,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
             if not self.checker(parse[0], ["ec"]):
                 return
             if len(parse) == 3:
-                model = " ".join([parse[0], *parse[2]])
+                model = " ".join([parse[0], parse[2][0]])
                 if not self.checker(model, ["ec", "es"]):
                     return
                 method = getattr(classes[parse[0]], parse[1])
@@ -113,7 +113,10 @@ class HBNBCommand(cmd.Cmd):
                 parts = parts[1].rstrip(")")
                 if not parts:
                     return cls, method
-                args = [literal_eval(i.strip()) for i in parts.split(",")]
+                if "{" not in parts:
+                    args = [literal_eval(i.strip()) for i in parts.split(",")]
+                else:
+                    args = [literal_eval(i.strip()) for i in parts.split(",", 1)]
                 return cls, method, args
             return cls, parts[0]
         else:
