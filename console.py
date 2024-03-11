@@ -4,12 +4,11 @@ This module represents a commandline
 interpreter to manage the hbnb console
 """
 from ast import literal_eval
-from cmd import Cmd
-
+import cmd
 from models import classes, storage
 
 
-class HBNBCommand(Cmd):
+class HBNBCommand(cmd.Cmd):
     """
     This class represents a commandline
     interpreter to manage the hbnb console
@@ -32,7 +31,6 @@ class HBNBCommand(Cmd):
     def do_create(self, model):
         """create command to create a new instance of a specific model"""
 
-        print(model)
         if not self.checker(model, ["n", 'ec']):
             return
         ins = classes[model]()
