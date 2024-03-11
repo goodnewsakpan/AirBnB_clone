@@ -52,8 +52,7 @@ class HBNBCommand(cmd.Cmd):
 
         if not self.checker(model, ["n", "l", "ec", "es"]):
             return
-        cls = model.split()[0]
-        key = model.replace(' ', '.')
+        cls, key = model.split()
         classes[cls].destroy(key)
 
     def do_all(self, model):
