@@ -33,7 +33,6 @@ class FileStorage:
 
     def reload(self):
         """Reloads objects from the JSON file into the file storage"""
-        print("OK")
         if not path.exists(self.__file_path):
             return
         with open(self.__file_path) as js:
