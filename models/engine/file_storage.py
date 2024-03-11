@@ -49,7 +49,7 @@ class FileStorage:
     def get_all(self, key=None):
         """Gets all objects from the storage optionally filtered by the key"""
         if not key:
-            return [str(i) for i in self.all().values()]
+            return [i for i in self.all().values()]
         return list(filter(
             lambda search_found: key in str(search_found),
             self.all().values()

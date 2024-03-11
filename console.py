@@ -65,7 +65,10 @@ class HBNBCommand(cmd.Cmd):
 
         if model and not self.checker(model, ["ec"]):
             return
-        print(classes[model].all())
+        if model:
+            print(classes[model].all())
+        else:
+            print(storage.get_all())
 
     def do_update(self, model):
         """update command to modify an instance attribute value"""
