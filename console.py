@@ -18,10 +18,10 @@ class HBNBCommand(Cmd):
 
     def emptyline(self):
         """Called when an empty line is passed"""
-        pass
 
     def do_quit(self, _):
-        """quit command to exit the interpreter"""
+        """Quit command to exit the program"""
+        
         return True
 
     def do_EOF(self, _):
