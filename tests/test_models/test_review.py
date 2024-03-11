@@ -101,13 +101,15 @@ class TestReview(TestCase):
     def test_review__str__(self):
         review = Review()
 
-        string = f"[{review.__class__.__name__}] ({review.id}) {review.__dict__}"
+        string = (f"[{review.__class__.__name__}] "
+                  f"({review.id}) {review.__dict__}")
         self.assertEqual(str(review), string)
 
     def test_review__repr__(self):
         review = Review()
 
-        string = f"[{review.__class__.__name__}] ({review.id}) {review.__dict__}"
+        string = (f"[{review.__class__.__name__}] "
+                  f"({review.id}) {review.__dict__}")
         self.assertEqual(review.__repr__(), string)
 
     def test_review_save(self):

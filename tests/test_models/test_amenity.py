@@ -90,13 +90,15 @@ class TestAmenity(TestCase):
     def test_amenity__str__(self):
         amenity = Amenity()
 
-        string = f"[{amenity.__class__.__name__}] ({amenity.id}) {amenity.__dict__}"
+        string = (f"[{amenity.__class__.__name__}] "
+                  f"({amenity.id}) {amenity.__dict__}")
         self.assertEqual(str(amenity), string)
 
     def test_amenity__repr__(self):
         amenity = Amenity()
 
-        string = f"[{amenity.__class__.__name__}] ({amenity.id}) {amenity.__dict__}"
+        string = (f"[{amenity.__class__.__name__}] "
+                  f"({amenity.id}) {amenity.__dict__}")
         self.assertEqual(amenity.__repr__(), string)
 
     def test_amenity_save(self):
